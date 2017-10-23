@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: d58fa61bb4cfc06428bb6f3cfae972c6
+timeCreated: 1503500677
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Front
+    100002: FrontFarO
+    100004: FrontFarO.001
+    100006: FrontFarX
+    100008: FrontFarX.001
+    100010: FrontNearO
+    100012: FrontNearO.001
+    100014: FrontNearX
+    100016: FrontNearX.001
+    100018: Left
+    100020: LeftFarO
+    100022: LeftFarO.001
+    100024: LeftFarO.002
+    100026: LeftFarO.003
+    100028: LeftFarX
+    100030: LeftFarX.001
+    100032: LeftFarX.002
+    100034: LeftFarX.003
+    100036: LeftNearO
+    100038: LeftNearO.001
+    100040: LeftNearO.002
+    100042: LeftNearO.003
+    100044: LeftNearX
+    100046: LeftNearX.001
+    100048: LeftNearX.002
+    100050: LeftNearX.003
+    100052: Right
+    100054: RightFarO.004
+    100056: RightFarO.005
+    100058: RightFarO.006
+    100060: RightFarO.007
+    100062: RightFarX.004
+    100064: RightFarX.005
+    100066: RightFarX.006
+    100068: RightFarX.007
+    100070: RightNearO.004
+    100072: RightNearO.005
+    100074: RightNearO.006
+    100076: RightNearO.007
+    100078: RightNearX.004
+    100080: RightNearX.005
+    100082: RightNearX.006
+    100084: RightNearX.007
+    100086: //RootNode
+    100088: Source
+    400000: Front
+    400002: FrontFarO
+    400004: FrontFarO.001
+    400006: FrontFarX
+    400008: FrontFarX.001
+    400010: FrontNearO
+    400012: FrontNearO.001
+    400014: FrontNearX
+    400016: FrontNearX.001
+    400018: Left
+    400020: LeftFarO
+    400022: LeftFarO.001
+    400024: LeftFarO.002
+    400026: LeftFarO.003
+    400028: LeftFarX
+    400030: LeftFarX.001
+    400032: LeftFarX.002
+    400034: LeftFarX.003
+    400036: LeftNearO
+    400038: LeftNearO.001
+    400040: LeftNearO.002
+    400042: LeftNearO.003
+    400044: LeftNearX
+    400046: LeftNearX.001
+    400048: LeftNearX.002
+    400050: LeftNearX.003
+    400052: Right
+    400054: RightFarO.004
+    400056: RightFarO.005
+    400058: RightFarO.006
+    400060: RightFarO.007
+    400062: RightFarX.004
+    400064: RightFarX.005
+    400066: RightFarX.006
+    400068: RightFarX.007
+    400070: RightNearO.004
+    400072: RightNearO.005
+    400074: RightNearO.006
+    400076: RightNearO.007
+    400078: RightNearX.004
+    400080: RightNearX.005
+    400082: RightNearX.006
+    400084: RightNearX.007
+    400086: //RootNode
+    400088: Source
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Room
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
