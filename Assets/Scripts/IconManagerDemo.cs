@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using HoloToolkit.Unity;
-using HoloToolkit.Unity.InputModule;
 
-public class IconManagerDemo : MonoBehaviour, IInputHandler
+public class IconManagerDemo : MonoBehaviour
 {
     #region //VARIABLES REGION
 
@@ -82,7 +80,7 @@ public class IconManagerDemo : MonoBehaviour, IInputHandler
     #region //STATES, MONOBEHAVIOR
     void Start()
     {
-        InputManager.Instance.AddGlobalListener(gameObject); // for OnInputDown to work
+        //InputManager.Instance.AddGlobalListener(gameObject); // for OnInputDown to work
         m_expWriter = transform.GetComponent<ExperimentWriter>(); // to connect to the CSV generator
 
     }
@@ -209,89 +207,89 @@ public class IconManagerDemo : MonoBehaviour, IInputHandler
     }
 
 
-    public void OnInputUp(InputEventData eventData)
+    /*public void OnInputUp(InputEventData eventData)
     {
         
-    }
+    }*/
 
     // Upon AirTap / Clicker
-    public void OnInputDown(InputEventData eventData)
-    {
-        if (m_currentMode == Mode.AR) { ChangeMode(Mode.VR); }
-        else { ChangeMode(Mode.AR); }
+    /* public void OnInputDown(InputEventData eventData)
+     {
+         if (m_currentMode == Mode.AR) { ChangeMode(Mode.VR); }
+         else { ChangeMode(Mode.AR); }
 
-        Debug.Log(m_currentMode);
+         Debug.Log(m_currentMode);
 
-        /* m_inputTime = m_time;
-         if (m_iconState == IconState.Show)
-         {
-             SaveState("stimulus", m_showTime); m_showTime = 0;
-         }
-         if (m_iconState == IconState.End)
-         {
-             SaveState("highlight", m_endTime); m_endTime = 0;
-             m_endTime = 0;
-             ResetIconPosition();
-             UpdateSession();
+         /* m_inputTime = m_time;
+          if (m_iconState == IconState.Show)
+          {
+              SaveState("stimulus", m_showTime); m_showTime = 0;
+          }
+          if (m_iconState == IconState.End)
+          {
+              SaveState("highlight", m_endTime); m_endTime = 0;
+              m_endTime = 0;
+              ResetIconPosition();
+              UpdateSession();
 
-             m_fracJourney = 0;
-             m_accumDistance = 0;
-             SaveSession();
-             ChangeIconState(IconState.Start);
-         }
+              m_fracJourney = 0;
+              m_accumDistance = 0;
+              SaveSession();
+              ChangeIconState(IconState.Start);
+          }
 
-         // configures the language, mode, and set
-         RaycastHit rayCast;
-         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayCast, Mathf.Infinity, LayerMask.GetMask("Choices UI")))
-         {
-             GameObject choice = rayCast.collider.gameObject;
+          // configures the language, mode, and set
+          RaycastHit rayCast;
+          if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayCast, Mathf.Infinity, LayerMask.GetMask("Choices UI")))
+          {
+              GameObject choice = rayCast.collider.gameObject;
 
-             if (choice.transform.parent.name == "Language")
-             {
-                 if (choice.name.Equals("JP"))
-                 { m_currentLang = LabelLanguage.Japanese; Destroy(choice.transform.parent.Find("EN").gameObject); }
-                 else if (choice.name.Equals("EN"))
-                 { m_currentLang = LabelLanguage.English; Destroy(choice.transform.parent.Find("JP").gameObject); }
+              if (choice.transform.parent.name == "Language")
+              {
+                  if (choice.name.Equals("JP"))
+                  { m_currentLang = LabelLanguage.Japanese; Destroy(choice.transform.parent.Find("EN").gameObject); }
+                  else if (choice.name.Equals("EN"))
+                  { m_currentLang = LabelLanguage.English; Destroy(choice.transform.parent.Find("JP").gameObject); }
 
-             }
-             else if (choice.transform.parent.name == "Mode")
-             {
-                 if (choice.name.Equals("AR"))
-                 { m_currentMode = Mode.AR; Destroy(choice.transform.parent.Find("VR").gameObject); }
-                 else if (choice.name.Equals("VR"))
-                 { m_currentMode = Mode.VR; Destroy(choice.transform.parent.Find("AR").gameObject); }
+              }
+              else if (choice.transform.parent.name == "Mode")
+              {
+                  if (choice.name.Equals("AR"))
+                  { m_currentMode = Mode.AR; Destroy(choice.transform.parent.Find("VR").gameObject); }
+                  else if (choice.name.Equals("VR"))
+                  { m_currentMode = Mode.VR; Destroy(choice.transform.parent.Find("AR").gameObject); }
 
-             }
-             else if (choice.transform.parent.name == "Set")
-             {
-                 SetTag("Set" + choice.name);
-                 if (choice.name.Equals("A"))
-                 { Destroy(choice.transform.parent.Find("B").gameObject); }
-                 else if (choice.name.Equals("B"))
-                 { Destroy(choice.transform.parent.Find("A").gameObject); }
-             }
-             Destroy(choice);
-         }
+              }
+              else if (choice.transform.parent.name == "Set")
+              {
+                  SetTag("Set" + choice.name);
+                  if (choice.name.Equals("A"))
+                  { Destroy(choice.transform.parent.Find("B").gameObject); }
+                  else if (choice.name.Equals("B"))
+                  { Destroy(choice.transform.parent.Find("A").gameObject); }
+              }
+              Destroy(choice);
+          }
 
-         if (m_frontWall != null && m_leftWall != null && m_rightWall != null)
-         { 
-             if (m_currentSession == Session.Short)
-             {
-                 m_frontWall.enabled = false;
-                 m_leftWall.enabled = false;
-                 m_rightWall.enabled = false;
-                 UpdateNextShortTestItem();
-             }
-             else
-             {
-                 m_frontWall.enabled = true;
-                 m_leftWall.enabled = true;
-                 m_rightWall.enabled = true;
-                 UpdateNextTrainingSequence();
-             }
-         }
-         */
-    }
+          if (m_frontWall != null && m_leftWall != null && m_rightWall != null)
+          { 
+              if (m_currentSession == Session.Short)
+              {
+                  m_frontWall.enabled = false;
+                  m_leftWall.enabled = false;
+                  m_rightWall.enabled = false;
+                  UpdateNextShortTestItem();
+              }
+              else
+              {
+                  m_frontWall.enabled = true;
+                  m_leftWall.enabled = true;
+                  m_rightWall.enabled = true;
+                  UpdateNextTrainingSequence();
+              }
+          }
+
+     } */
 
     void UpdateNextShortTestItem()
     {

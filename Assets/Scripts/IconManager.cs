@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using HoloToolkit.Unity;
-using HoloToolkit.Unity.InputModule;
-
-public class IconManager : MonoBehaviour, IInputHandler
+public class IconManager : MonoBehaviour
 {
     #region //VARIABLES REGION
 
@@ -90,6 +87,10 @@ public class IconManager : MonoBehaviour, IInputHandler
     // Check first if all settings have been configured before starting the training session
     bool IsInitialized()
     {
+        m_currentLang = LabelLanguage.English;
+        m_currentMode = Mode.VR;
+        SetTag("SetA");
+
         if (m_currentMode == Mode.None || m_currentLang == LabelLanguage.None || m_currentTag == "None")
         {
             return false;
@@ -126,7 +127,7 @@ public class IconManager : MonoBehaviour, IInputHandler
     void Update() {
 
         m_time += Time.deltaTime;
-        
+
         if (m_iconState == IconState.End)
         {
             if (m_endTime >= MAX_END_TIME)
@@ -188,7 +189,7 @@ public class IconManager : MonoBehaviour, IInputHandler
         }
 
         // For Unity editor purposes only / needs Spatial Mapping and Anchor Scripts turned off
-        if (Input.GetKeyUp(KeyCode.Space)) 
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             if (m_currentSession == Session.Short)
             {
@@ -205,30 +206,40 @@ public class IconManager : MonoBehaviour, IInputHandler
                 UpdateNextTrainingSequence();
             }
         }
+
+        if (leftControllerLineRenderer.enabled && leftControllerLineRenderer != null && _controller != null)
+        {
+            leftControllerLineRenderer.SetPosition(0, _controller.transform.position);
+            leftControllerLineRenderer.SetPosition(1, _controller.transform.position + _controller.transform.forward * 20.0f);
+        }
     }
 
 
-    public void OnInputUp(InputEventData eventData)
+    /*public void OnInputUp(InputEventData eventData)
     {
         
-    }
+    }*/
 
     //Vive
 
-    private SteamVR_TrackedController _controller;
-    private LineRenderer leftControllerLineRenderer;
-    private bool isToggled = false;
+    public SteamVR_TrackedController _controller;
+    public LineRenderer leftControllerLineRenderer;
 
     private void OnEnable()
     {
-        _controller = GameObject.FindGameObjectWithTag("GameController").transform.GetComponent<SteamVR_TrackedController>();
-        _controller.TriggerClicked += HandleTriggerClicked;
-        _controller.PadClicked += HandlePadClicked;
+        if (_controller != null)
+        {
+            _controller.TriggerClicked += HandleTriggerClicked;
+            _controller.TriggerUnclicked += HandleTriggerUnclicked;
+            _controller.PadClicked += HandlePadClicked;
+        }
+            
     }
 
     private void OnDisable()
     {
         _controller.TriggerClicked -= HandleTriggerClicked;
+        _controller.TriggerUnclicked -= HandleTriggerUnclicked;
         _controller.PadClicked -= HandlePadClicked;
     }
 
@@ -236,13 +247,21 @@ public class IconManager : MonoBehaviour, IInputHandler
     {
         if (leftControllerLineRenderer != null)
         {
-            leftControllerLineRenderer.enabled = !isToggled;
-            leftControllerLineRenderer.SetPosition(0, _controller.transform.position);
-            leftControllerLineRenderer.SetPosition(1, _controller.transform.position + _controller.transform.forward * 20.0f);
+            leftControllerLineRenderer.enabled = true;
         }
 
         Debug.Log("triggered");
-        BehaveUponClick();
+    }
+
+    private void HandleTriggerUnclicked(object sender, ClickedEventArgs e)
+    {
+        if (leftControllerLineRenderer != null)
+        {
+            leftControllerLineRenderer.enabled = false;
+        }
+
+        Debug.Log("registered");
+        
     }
 
     private void HandlePadClicked(object sender, ClickedEventArgs e)
@@ -273,7 +292,7 @@ public class IconManager : MonoBehaviour, IInputHandler
         }
 
         // configures the language, mode, and set
-        RaycastHit rayCast;
+        /*RaycastHit rayCast;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayCast, Mathf.Infinity, LayerMask.GetMask("Choices UI")))
         {
             GameObject choice = rayCast.collider.gameObject;
@@ -303,7 +322,7 @@ public class IconManager : MonoBehaviour, IInputHandler
                 { Destroy(choice.transform.parent.Find("A").gameObject); }
             }
             Destroy(choice);
-        }
+        }*/
 
         if (m_frontWall != null && m_leftWall != null && m_rightWall != null)
         {
@@ -327,10 +346,10 @@ public class IconManager : MonoBehaviour, IInputHandler
 
 
     // Upon AirTap / Clicker
-    public void OnInputDown(InputEventData eventData)
+    /*public void OnInputDown(InputEventData eventData)
     {
         BehaveUponClick();
-    }
+    }*/
 
     void UpdateNextShortTestItem()
     {
