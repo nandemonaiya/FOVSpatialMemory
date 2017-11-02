@@ -292,12 +292,12 @@ public class IconManager : MonoBehaviour
         }
 
         // configures the language, mode, and set
-        /*RaycastHit rayCast;
+        RaycastHit rayCast;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayCast, Mathf.Infinity, LayerMask.GetMask("Choices UI")))
         {
             GameObject choice = rayCast.collider.gameObject;
 
-            if (choice.transform.parent.name == "Language")
+            /*if (choice.transform.parent.name == "Language")
             {
                 if (choice.name.Equals("JP"))
                 { m_currentLang = LabelLanguage.Japanese; Destroy(choice.transform.parent.Find("EN").gameObject); }
@@ -313,7 +313,7 @@ public class IconManager : MonoBehaviour
                 { m_currentMode = Mode.VR; Destroy(choice.transform.parent.Find("AR").gameObject); }
 
             }
-            else if (choice.transform.parent.name == "Set")
+            else*/ if (choice.transform.parent.name == "Set")
             {
                 SetTag("Set" + choice.name);
                 if (choice.name.Equals("A"))
@@ -322,7 +322,7 @@ public class IconManager : MonoBehaviour
                 { Destroy(choice.transform.parent.Find("A").gameObject); }
             }
             Destroy(choice);
-        }*/
+        }
 
         if (m_frontWall != null && m_leftWall != null && m_rightWall != null)
         {
